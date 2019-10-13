@@ -1,7 +1,10 @@
 {
-  "name": "root",
-  "private": true,
-  "devDependencies": {
-    "lerna": "^3.17.0"
-  }
+    "name": "root",
+    "private": true,
+    "devDependencies": {
+        "lerna": "^3.17.0"
+    },
+    "workspaces": [
+        "packages/*"
+    ]
 }

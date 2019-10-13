@@ -1,0 +1,23 @@
+{
+    "name": "docsby-cli",
+    "version": "0.1.0",
+    "description": "",
+    "keywords": [
+        "cli",
+        "docsby"
+    ],
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "docsby build-gatsby",
+        "develop": "docsby develop-gatsby"
+    },
+    "bin": {
+        "docsby": "bin/docsby"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "shelljs": "^0.8.3"
+    }
+}
