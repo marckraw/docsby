@@ -1,23 +1,32 @@
 {
-    "name": "docsby-cli",
-    "version": "0.1.0",
-    "description": "",
-    "keywords": [
-        "cli",
-        "docsby"
-    ],
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "docsby build-gatsby",
-        "develop": "docsby develop-gatsby"
-    },
-    "bin": {
-        "docsby": "bin/docsby"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "shelljs": "^0.8.3"
-    }
+  "name": "docsby-cli",
+  "homepage": "https://github.com/marckraw/docsby.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marckraw/docsby.git"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [
+    "cli",
+    "docsby"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "help": "docsby --help"
+  },
+  "bin": {
+    "docsby": "bin/docsby"
+  },
+  "preferGlobal": true,
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "shelljs": "^0.8.3",
+    "yargs": "^14.2.0"
+  }
 }
