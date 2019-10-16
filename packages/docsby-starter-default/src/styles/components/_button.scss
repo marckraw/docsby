@@ -1,0 +1,23 @@
+.button {
+  margin: 8px;
+  padding: 16px;
+  font-size: 12px;
+  border: 1px solid blueviolet;
+  background-color: white;
+  color: gray;
+  transition: background-color 0.2s ease-in;
+
+  &:hover {
+    background-color: blueviolet;
+    color: white;
+  }
+
+  &.--primary {
+    background-color: chocolate;
+    color: black;
+
+    &:hover {
+      background-color: yellow;
+    }
+  }
+}
