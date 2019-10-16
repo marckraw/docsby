@@ -1,0 +1,16 @@
+---
+title: Sample
+path: /sample
+---
+
+import SampleButton from "../../components/SampleButton"
+
+<Section>
+  <Container>
+    <h2 class="ef-h2">{props.pageContext.frontmatter.title}</h2>
+    <p>This is sample .mdx Page</p>
+    <h3>This is sample react component inside .mdx: </h3>
+    <SampleButton>Sample Button</SampleButton>
+    <SampleButton primary>Sample Button with `primary` prop</SampleButton>
+  </Container>
+</Section>

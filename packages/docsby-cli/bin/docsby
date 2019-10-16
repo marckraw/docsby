@@ -1,180 +1,56 @@
 #!/usr/bin/env node
 
-const yargs = require(`yargs`)
-const shell = require('shelljs');
-const fs = require('fs')
-
-function cli(args) {
-    // const onlyCmds = args.slice(2);
-    // const npmCmdToExecute = "npm run " + onlyCmds.join(" ");
-    const npmCmdToExecute = "npm run " + args;
-    shell.exec(npmCmdToExecute);
-}
+const yargs = require(`yargs`);
+const shell = require("shelljs");
 
 yargs
     .command(
-        'new',
-        'Bootstraping new Docsby project!',
-        function (yargs) {
-            return yargs.option('f', {
-                alias: 'from',
-                describe: 'Url to custom Docsby compliant template'
-            })
+        "new",
+        "Bootstraping new Docsby project!",
+        function(yargs) {
+            return yargs.option("f", {
+                alias: "from",
+                describe: "Url to custom Docsby compliant template"
+            });
         },
-        function () {
+        function(yargs) {
+            // very naive getting name of the project
+            const projectName = yargs._[yargs._.length - 1];
+
             // here should be some logic behing cloning things and setting up stuffs
-            console.log("bootstraping new Docsby project");
-            // shell.exec(`npm run help`)
+            console.log("bootstraping new default Docsby project");
+            if (yargs.f) {
+                // TODO: make git clone command async, to be able to remove .git folder after pull
+                console.log("using from: to clone project");
+                shell.exec(`git clone ${yargs.f} ${projectName}`);
+            } else {
+                // TODO: make git clone command async, to be able to remove .git folder after pull
+                shell.exec(
+                    `git clone git@github.com:marckraw/docsby-starter-default.git ${projectName}`
+                );
+            }
         }
     )
+    .command("help", "Runs docsby help", function() {
+        shell.exec(`npm run help`);
+    })
+    .command("build", "Runs docsby build", function() {
+        shell.exec(`npm run build`);
+    })
+    .command("develop", "Runs docsby develop", function() {
+        shell.exec(`npm run develop`);
+    })
     .command(
-        'help',
-        'Runs docsby help',
-        function () {
-            shell.exec(`npm run help`)
-        }
-    )
-    .command(
-        'build',
-        'Runs docsby build',
-        function () {
-            shell.exec(`npm run build`)
-        }
-    )
-    .command(
-        'develop',
-        'Runs docsby develop',
-        function () {
-            shell.exec(`npm run develop`)
-        }
-    )
-    .command(
-        'run',
-        'run any npm script from local package',
-        function (yargs) {
-            return yargs.option('c', {
-                alias: 'cmd',
-                describe: 'namd of npm script'
-            })
+        "run",
+        "run any npm script from local package",
+        function(yargs) {
+            return yargs.option("c", {
+                alias: "cmd",
+                describe: "namd of npm script"
+            });
         },
-        function (argv) {
-            shell.exec(`npm run ${argv.cmd}`)
+        function(argv) {
+            shell.exec(`npm run ${argv.cmd}`);
         }
     )
-    .command(
-        'get',
-        'make a get HTTP request',
-        function (yargs) {
-            return yargs.option('u', {
-                alias: 'url',
-                describe: 'the URL to make an HTTP GET request to'
-            })
-        },
-        function (argv) {
-            console.log(`making GET request to: ${argv.url}`)
-        }
-    )
-    .command(
-        'post',
-        'make a post HTTP request',
-        function (yargs) {
-            return yargs.option('u', {
-                alias: 'url',
-                describe: 'the URL to make an HTTP POST request to'
-            })
-        },
-        function (argv) {
-
-            console.log(`making POST request to: ${argv.url}`)
-        }
-    )
-    .help()
-    .argv
-
-    //testing change s
-
-// const argv = yargs.usage('Usage: $0 <command> [options]')
-//     .help('h')
-//     .alias('v', 'version')
-//     .alias('h', 'help')
-//     .option("b", {
-//         describe: "Display a specific breed",
-//         type: "string",
-//         nargs: 1,
-//         requiresArg: true,
-//     })
-//     .alias("b", "breed")
-
-// argv.command("run", "Run any npm script from local package.json")
-//     .example("$0 run develop",
-//         "runs npm develop script")
-//     .alias("s", "script")
-//     .nargs("s", 1)
-//     .demandOption(["s"])
-
-// argv.command("count", "Count the lines in a file")
-//     .example("$0 count -f foo.js",
-//         "count the lines in the given file")
-//     .alias("f", "file")
-//     .nargs("f", 1)
-//     .describe("f", "Load a file")
-//     .demandOption(["f"]).argv;
-
-
-// const argv = require('yargs')
-//     .usage('Usage: $0 <command> [options]')
-//     .command('count', 'Count the lines in a file')
-//     .example('$0 count -f foo.js', 'count the lines in the given file')
-//     .alias('f', 'file')
-//     .nargs('f', 1)
-//     .describe('f', 'Load a file')
-//     .demandOption(['f'])
-//     .help('h')
-//     .alias('h', 'help').argv
-
-
-// Create stream with the file
-// const s = fs.createReadStream(argv.f)
-
-// let lines = 0
-// s.on('data', buf => {
-//     // Get the number of lines
-//     lines += buf.toString().match(/\n/g).length
-// })
-
-// s.on('end', () => {
-//     // Display the number of lines
-//     console.log(lines)
-// })
-
-// cli(argv.s)
-
-
-// let cli = yargs()
-// let isLocalSite = isLocalGatsbySite()
-
-// return yargs
-//     .scriptName(`docsby`)
-//     .usage(`Usage: $0 <command> [options]`)
-//     .alias(`h`, `help`)
-//     .alias(`v`, `version`)
-//     .option(`verbose`, {
-//         default: false,
-//         type: `boolean`,
-//         describe: `Turn on verbose output`,
-//         global: true,
-//     })
-//     .option(`no-color`, {
-//         alias: `no-colors`,
-//         default: false,
-//         type: `boolean`,
-//         describe: `Turn off the color in output`,
-//         global: true,
-//     })
-
-// buildLocalCommands(cli, isLocalSite)
-
-
-
-
-
+    .help().argv;
