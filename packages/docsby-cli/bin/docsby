@@ -7,13 +7,13 @@ yargs
     .command(
         "new",
         "Bootstraping new Docsby project!",
-        function(yargs) {
+        function (yargs) {
             return yargs.option("f", {
                 alias: "from",
                 describe: "Url to custom Docsby compliant template"
             });
         },
-        function(yargs) {
+        function (yargs) {
             // very naive getting name of the project
             const projectName = yargs._[yargs._.length - 1];
 
@@ -31,26 +31,29 @@ yargs
             }
         }
     )
-    .command("help", "Runs docsby help", function() {
-        shell.exec(`npm run help`);
+    .command("help", "Runs docsby help", function () {
+        shell.exec(`yarn help`);
     })
-    .command("build", "Runs docsby build", function() {
-        shell.exec(`npm run build`);
+    .command("install", "Installs local packages with yarn", function () {
+        shell.exec(`yarn`);
     })
-    .command("develop", "Runs docsby develop", function() {
-        shell.exec(`npm run develop`);
+    .command("start", "Runs Docsby in develop", function () {
+        shell.exec(`yarn start`);
+    })
+    .command("build", "Runs docsby build", function () {
+        shell.exec(`yarn build`);
     })
     .command(
         "run",
-        "run any npm script from local package",
-        function(yargs) {
+        "run any npm script from local package with yarn",
+        function (yargs) {
             return yargs.option("c", {
                 alias: "cmd",
                 describe: "namd of npm script"
             });
         },
-        function(argv) {
-            shell.exec(`npm run ${argv.cmd}`);
+        function (argv) {
+            shell.exec(`yarn ${argv.cmd}`);
         }
     )
     .help().argv;
