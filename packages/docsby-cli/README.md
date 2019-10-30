@@ -1,4 +1,4 @@
-![Docsby](/assets/Docsby_Logo.svg "Docsby Logo")
+<center><img src="./src/assets/Docsby_Logo.svg" width="500"></center>
 
 # Docsby CLI
 
