@@ -1,6 +1,8 @@
+<center><img src="./src/assets/Docsby_Logo.svg" width="500"></center>
+
 # Docsby CLI
 
-This is *Docsby CLI* used to bootstrap new *Docsby* documentation project.
+This is _Docsby CLI_ used to bootstrap new _Docsby_ documentation project.
 
 ## CLI Commands
 
@@ -34,11 +36,9 @@ docsby new [<folder-name>]
 docsby new my-documentation
 ```
 
-
 ### `develop`
 
 Just run `npm run develop` command in your local folder.
-
 
 ### `build`
 
