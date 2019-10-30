@@ -1,1 +1,1 @@
-![Docsby](/assets/Docsby_Logo.svg "Docsby Logo")
+<center><img src="./assets/Docsby_Logo.svg" width="500"></center>
